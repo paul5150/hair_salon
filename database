@@ -1,0 +1,31 @@
+Database for hair_salon
+
+
+Last login: Fri May  8 13:25:07 on ttys000
+Pauls-MacBook-Pro-3:hair_salon paulmorin$ psql
+psql (9.4.1)
+Type "help" for help.
+
+paulmorin=# CREATE DATABASE hair_salon;
+ERROR:  database "hair_salon" already exists
+paulmorin=# \c hair_salon
+You are now connected to database "hair_salon" as user "paulmorin".
+hair_salon=# \d
+No relations found.
+hair_salon=# CREATE TABLE clients (id serial PRIMARY KEY, name varchar);
+CREATE TABLE
+hair_salon=# CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+CREATE TABLE
+hair_salon=# \d clients
+                              Table "public.clients"
+ Column |       Type        |                      Modifiers                       
+--------+-------------------+------------------------------------------------------
+ id     | integer           | not null default nextval('clients_id_seq'::regclass)
+ name   | character varying | 
+Indexes:
+    "clients_pkey" PRIMARY KEY, btree (id)
+
+hair_salon=# CREATE DATABASE hair_salon_test with TEMPLATE hair_salon
+hair_salon-# ;
+CREATE DATABASE
+hair_salon=# 
